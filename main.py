@@ -4,10 +4,10 @@ import mysql.connector
 
 def mysql_connect():
     connect = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='superunlock',
-        database='accounts'
+        host='',
+        user='',
+        password='',
+        database=''
     )
     return connect
 
