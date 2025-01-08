@@ -4,10 +4,10 @@ import mysql.connector
 
 def mysql_connect():
     connect = mysql.connector.connect(
-        host='',
-        user='',
-        password='',
-        database=''
+        host='localhost',
+        user='root',
+        password='superunlock',
+        database='accounts'
     )
     return connect
 
@@ -37,6 +37,7 @@ def signUp():
         cursor.close()
         connect.close()
         print("\nRegistration successful :)\n")
+
 
 def signIn(name,password):
     connect = mysql_connect()
@@ -170,12 +171,22 @@ def welcomeScreen():
                 transact(name)
                 sleep(2)
         elif answer.lower() == 'n':
-            reply = input("Would you like to create an account?\n(y) for yes or (n) for no\n: ")
-            if reply.lower() == 'y':
+
                 signUp()
-            else:
-                print("\nThank you for using our services :)")
-                exit(0)
+                print("Press (e) to exit")
+                print('Log in')
+                name = input("Name: ")
+                if name.lower() == 'e':
+                    print("\nThank you for using our services :)")
+                    exit(0)
+                password = input("Password: ")
+                if password.lower() == 'e':
+                    print("\nThank you for using our services :)")
+                    exit(0)
+                signIn(name,password)
+                while True:
+                    transact(name)
+
         elif answer.lower() == 'e':
             print("\nThank you for using our services :)")
             exit(0)
